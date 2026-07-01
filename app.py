@@ -134,4 +134,37 @@ def show_all_karvands():
                 skill["score"]
             )
             
-add_karvand()
+            
+def search_by_id():
+    data = load_data()
+
+    try:
+        target_id = int(input("Enter id: "))
+    except:
+        print("Invalid id.")
+        return
+
+    for person in data["karvands"]:
+        if person["id"] == target_id:
+            print(person)
+            return
+
+    print("Karvand not found.")
+    
+def search_by_skill():
+    data = load_data()
+
+    skill_name = input("Enter skill name: ").lower()
+    found = False
+
+    for person in data["karvands"]:
+        for skill in person["skills"]:
+            if skill["name"].lower() == skill_name:
+                print(person["full_name"])
+                found = True
+
+    if not found:
+        print("No karvand found.")
+        
+# search_by_id()
+search_by_skill()
