@@ -1,0 +1,39 @@
+{
+    "bootcamp": "Karvand Bootcamp",
+    "karvands": [
+        {
+            "id": 1,
+            "full_name": "ali darvish",
+            "email": "ali.darvishh2492@gmail.com",
+            "city": "marvdasht",
+            "education": {
+                "degree": "bachelor",
+                "major": "computer engineering"
+            },
+            "skills": [
+                {
+                    "name": "programming",
+                    "level": "beginner",
+                    "score": 45
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "full_name": "saeed darvish",
+            "email": "sd.saeed.darvish@gmail.com",
+            "city": "tehran",
+            "education": {
+                "degree": "master",
+                "major": "computer engineering"
+            },
+            "skills": [
+                {
+                    "name": "android android developer",
+                    "level": "professional",
+                    "score": 100
+                }
+            ]
+        }
+    ]
+}
