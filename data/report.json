@@ -1,0 +1,13 @@
+{
+    "total_karvands": 2,
+    "total_skills": 2,
+    "average_skill_score": 72.5,
+    "cities": [
+        "marvdasht",
+        "tehran"
+    ],
+    "unique_skills": [
+        "programming",
+        "android android developer"
+    ]
+}
