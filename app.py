@@ -21,7 +21,7 @@ def load_data():
         with open("data/karvands.json", "r") as file:
             return json.load(file)
 
-    except:
+    except (FileNotFoundError, json.JSONDecodeError):
         data = {
             "bootcamp": "Karvand Bootcamp",
             "karvands": []
@@ -63,7 +63,7 @@ def add_karvand():
 
             print("Score must be between 0 and 100.")
 
-        except:
+        except ValueError:
             print("Please enter a number.")
 
     new_karvand = {
@@ -126,7 +126,7 @@ def search_by_id():
 
     try:
         target_id = int(input("Enter id: "))
-    except:
+    except ValueError:
         print("Invalid id.")
         return
 
@@ -157,21 +157,22 @@ def edit_karvand():
 
     try:
         target_id = int(input("Enter id: "))
-    except:
+    except ValueError:
         print("Invalid id.")
         return
 
     for person in data["karvands"]:
-        if person["id"] == target_id:
+        if person["id"] != target_id:
+            continue
 
-            print("1. Email")
-            print("2. City")
-            print("3. Degree")
-            print("4. Major")
+        print("1. Email")
+        print("2. City")
+        print("3. Degree")
+        print("4. Major")
 
         try:
             choice = int(input("Choose what to edit: "))
-        except:
+        except ValueError:
             print("Please enter a number.")
             return
 
@@ -203,7 +204,7 @@ def delete_karvand():
 
     try:
         target_id = int(input("Enter id: "))
-    except:
+    except ValueError:
         print("Invalid id.")
         return
 
