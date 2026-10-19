@@ -11,7 +11,7 @@ def ask_int(prompt):
         return None
 
 
-def print_karvand(person):
+def print_person(person):
     print("-" * 30)
     print("ID:", person["id"])
     print("Name:", person["full_name"])
@@ -40,46 +40,46 @@ def add_menu(data):
         if score is not None:
             print("Score must be between 0 and 100.")
 
-    manager.add_karvand(data, full_name, email, city, degree, major,
+    manager.add_person(data, full_name, email, city, degree, major,
                         skill_name, skill_level, score)
     storage.save_data(data)
-    print("Karvand added successfully.")
+    print("Person added successfully.")
 
 
 def show_all_menu(data):
-    if not data["karvands"]:
-        print("No karvands found.")
+    if not data["people"]:
+        print("No people found.")
         return
-    for person in data["karvands"]:
-        print_karvand(person)
+    for person in data["people"]:
+        print_person(person)
 
 
 def search_id_menu(data):
-    karvand_id = ask_int("Enter id: ")
-    if karvand_id is None:
+    person_id = ask_int("Enter id: ")
+    if person_id is None:
         return
-    person = manager.find_by_id(data, karvand_id)
+    person = manager.find_by_id(data, person_id)
     if person is None:
-        print("Karvand not found.")
+        print("Person not found.")
     else:
-        print_karvand(person)
+        print_person(person)
 
 
 def search_skill_menu(data):
     people = manager.find_by_skill(data, input("Enter skill name: "))
     if not people:
-        print("No karvand found.")
+        print("No person found.")
     for person in people:
         print(person["full_name"])
 
 
 def edit_menu(data):
-    karvand_id = ask_int("Enter id: ")
-    if karvand_id is None:
+    person_id = ask_int("Enter id: ")
+    if person_id is None:
         return
-    person = manager.find_by_id(data, karvand_id)
+    person = manager.find_by_id(data, person_id)
     if person is None:
-        print("Karvand not found.")
+        print("Person not found.")
         return
 
     for number, field in enumerate(manager.EDITABLE_FIELDS, start=1):
@@ -93,18 +93,18 @@ def edit_menu(data):
     field = manager.EDITABLE_FIELDS[choice - 1]
     manager.update_field(person, field, input(f"New {field}: "))
     storage.save_data(data)
-    print("Karvand updated.")
+    print("Person updated.")
 
 
 def delete_menu(data):
-    karvand_id = ask_int("Enter id: ")
-    if karvand_id is None:
+    person_id = ask_int("Enter id: ")
+    if person_id is None:
         return
-    if manager.delete_karvand(data, karvand_id):
+    if manager.delete_person(data, person_id):
         storage.save_data(data)
-        print("Karvand deleted.")
+        print("Person deleted.")
     else:
-        print("Karvand not found.")
+        print("Person not found.")
 
 
 def report_menu(data):
@@ -114,12 +114,12 @@ def report_menu(data):
 
 
 ACTIONS = {
-    "1": ("Add Karvand", add_menu),
-    "2": ("Show All Karvands", show_all_menu),
+    "1": ("Add Person", add_menu),
+    "2": ("Show All People", show_all_menu),
     "3": ("Search By ID", search_id_menu),
     "4": ("Search By Skill", search_skill_menu),
-    "5": ("Edit Karvand", edit_menu),
-    "6": ("Delete Karvand", delete_menu),
+    "5": ("Edit Person", edit_menu),
+    "6": ("Delete Person", delete_menu),
     "7": ("Report", report_menu),
 }
 
@@ -128,7 +128,7 @@ def menu():
     data = storage.load_data()
 
     while True:
-        print("\n===== Karvand Manager =====")
+        print("\n===== Skills Manager =====")
         for key, (title, _) in ACTIONS.items():
             print(f"{key}. {title}")
         print("8. Exit")

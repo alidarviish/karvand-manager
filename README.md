@@ -1,27 +1,26 @@
-# Karvand Manager
+# Skills Manager
 
-[![Tests](https://github.com/alidarviish/karvand-manager/actions/workflows/tests.yml/badge.svg)](https://github.com/alidarviish/karvand-manager/actions/workflows/tests.yml)
+[![Tests](https://github.com/alidarviish/skills-manager/actions/workflows/tests.yml/badge.svg)](https://github.com/alidarviish/skills-manager/actions/workflows/tests.yml)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
 
-A command-line app for managing bootcamp students ("karvands") and their skills,
-with data stored in a JSON file.
+A command-line app for managing people and their skills, with data stored in a
+JSON file.
 
-It started as my final project for the Python, JSON and Git module of the Karvand
-bootcamp. Later I came back to it to fix a bug, split it into modules, and add
-tests and CI.
+It started as a single script. Later I came back to it to fix a bug, split it into
+modules, and add tests and CI.
 
 ## Features
 
-- Add, view, edit and delete karvands
+- Add, view, edit and delete people
 - Search by ID or by skill name (case-insensitive)
 - Input validation (numeric IDs, skill score between 0 and 100)
-- Generate a summary report (total karvands, average skill score, cities, unique skills)
-- Data saved to `data/karvands.json`, created automatically on first run
+- Generate a summary report (total people, average skill score, cities, unique skills)
+- Data saved to `data/people.json`, created automatically on first run
 
 ## Project Structure
 
 ```
-karvand-manager/
+skills-manager/
 ├── app.py          # entry point
 ├── cli.py          # text menu: all input() and print() calls
 ├── manager.py      # core logic: add, search, edit, delete, report
@@ -41,19 +40,19 @@ could be replaced (for example with a web UI) without touching the logic.
 Requires Python 3.10 or newer. No external packages are needed to run the app.
 
 ```bash
-git clone https://github.com/alidarviish/karvand-manager.git
-cd karvand-manager
+git clone https://github.com/alidarviish/skills-manager.git
+cd skills-manager
 python app.py
 ```
 
 ```
-===== Karvand Manager =====
-1. Add Karvand
-2. Show All Karvands
+===== Skills Manager =====
+1. Add Person
+2. Show All People
 3. Search By ID
 4. Search By Skill
-5. Edit Karvand
-6. Delete Karvand
+5. Edit Person
+6. Delete Person
 7. Report
 8. Exit
 Choose:
@@ -63,8 +62,7 @@ Choose:
 
 ```json
 {
-    "bootcamp": "Karvand Bootcamp",
-    "karvands": [
+    "people": [
         {
             "id": 1,
             "full_name": "Ali Ahmadi",
@@ -89,4 +87,4 @@ pytest
 ```
 
 The tests cover the core logic and file handling, including a regression test for
-an early bug where editing one karvand changed a different one.
+an early bug where editing one person changed a different one.

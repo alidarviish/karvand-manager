@@ -2,21 +2,21 @@ import json
 from pathlib import Path
 
 DATA_DIR = Path(__file__).parent / "data"
-KARVANDS_FILE = DATA_DIR / "karvands.json"
+PEOPLE_FILE = DATA_DIR / "people.json"
 REPORT_FILE = DATA_DIR / "report.json"
 
 
 def empty_data():
-    return {"bootcamp": "Karvand Bootcamp", "karvands": []}
+    return {"people": []}
 
 
-def save_data(data, path=KARVANDS_FILE):
+def save_data(data, path=PEOPLE_FILE):
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
 
 
-def load_data(path=KARVANDS_FILE):
+def load_data(path=PEOPLE_FILE):
     try:
         with open(path, "r", encoding="utf-8") as file:
             return json.load(file)
